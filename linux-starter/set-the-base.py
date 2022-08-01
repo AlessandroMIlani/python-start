@@ -9,7 +9,7 @@ input_distro = input("Choose distro family: \n1. Debian \n2. Arch \n3. RedHat \n
 
 
 if input_distro == "1":
-
+    install = "sudo apt install"
     print("Debian")
     update = input("Upgrade? (y/n) ")
     nala = input("Install Nala? (y/n) ")
@@ -21,6 +21,7 @@ if input_distro == "1":
         subprocess.call(["wget", "-qO", "-", "https://deb.volian.org/volian/scar.key", "|", "sudo", "tee", "/etc/apt/trusted.gpg.d/volian-archive-scar-unstable.gpg", ">", "/dev/null"])
         subprocess.call(["sudo", "apt-get", "update"])
         subprocess.call(["sudo", "apt-get", "install", "nala", "-y"])
+        install = "sudo nala install"
         print("Nala installed")
 
         if input("Set alias on .bashrc? (y/n) ") == "y":
@@ -44,7 +45,7 @@ if input_distro == "1":
         print("Base packages installed")
 
 elif input_distro == "2":
-
+    install = "sudo pacman -S"
     update = input("Update? (y/n) ")
     yay = input("Install yay? (y/n) ")
     dev_pack = input("Install devel packages? (y/n) ")
@@ -64,7 +65,7 @@ elif input_distro == "2":
         print("yay installed")
 
 elif input_distro == "3":
-
+    install = "sudo dnf install"
     update = input("Update? (y/n) ")
     rpm = input("Enable RPM Fusion repo Free & Nonfree? (y/n) ")
     dev_pack = input("Install devel packages? (y/n) ")
@@ -83,9 +84,12 @@ elif input_distro == "3":
 else:
     print("Invalid input")
 
-wall = input("Download wallpapers set? (y/n) ")
+if input("Install extra packages? (y/n) ") == "y":
+    extras = input("Enter packages: ")
+    subprocess.call([install, extras])
+    print("Extra packages installed")
 
-if wall == "y":
+if input("Download wallpapers set? (y/n) ") == "y":
     subprocess.call(["wget", "-qO", "-", "https://rpinas.ddns.net/s/tdNPDLcsmxfKY2W/download", "-O", "wallpapers.zip"]) # download wallpapers
     subprocess.call(["unzip", "wallpapers.zip", "-d", "$HOME/Immagini"]) # unzip wallpapers
     subprocess.call(["rm", "wallpapers.zip"]) # delete zip
