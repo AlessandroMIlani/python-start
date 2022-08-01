@@ -23,6 +23,12 @@ if input_distro == "1":
         subprocess.call(["sudo", "apt-get", "install", "nala", "-y"])
         print("Nala installed")
 
+        if input("Set alias on .bashrc? (y/n) ") == "y":
+            subprocess.call(["echo", "alias update='sudo nala update'", ">>", "$HOME/.bashrc"])
+            subprocess.call(["echo", "alias upgrade='sudo nala upgrade'", ">>", "$HOME/.bashrc"])
+            subprocess.call(["echo", "alias install='sudo nala install'", ">>", "$HOME/.bashrc"])
+            print("Alias set")
+
     if update == "y":
         if nala == "y":
             subprocess.call(["sudo", "nala", "upgrade", "-y"])
@@ -73,6 +79,15 @@ elif input_distro == "3":
     if dev_pack == "y":
         subprocess.call(["sudo", "-y", "dnf", "install", "gcc", "gcc-c++", "make", "cmake", "git", "vim", "tmux", "neovim"])
         print("Base packages installed")
-        
+
 else:
     print("Invalid input")
+
+wall = input("Download wallpapers set? (y/n) ")
+
+if wall == "y":
+    subprocess.call(["wget", "-qO", "-", "https://rpinas.ddns.net/s/tdNPDLcsmxfKY2W/download", "-O", "wallpapers.zip"]) # download wallpapers
+    subprocess.call(["unzip", "wallpapers.zip", "-d", "$HOME/Immagini"]) # unzip wallpapers
+    subprocess.call(["rm", "wallpapers.zip"]) # delete zip
+    print("Wallpapers downloaded")
+
