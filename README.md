@@ -2,8 +2,12 @@
 
 primi progetti personali in python:
 
-### Linux-starter: 
-script in python per riconoscere la distro linux e successivamente automatizzare vari aspetti (installazione programmi base, creazione alias, download wallapaper).
+### Linux-manage: 
+script in python gestire vari aspetti di un installazione linux
 
-P.S. per uso personale, parte delle informazioni (come percorsi delle cartelle, nome file da salvare) potrebbero essere hard coded
+- ##### set-the-base.py
+    Script per una prima configurazione del sistema (aggiornametni, repo extra, sfondi, ecc...)
+
+- ##### download-manager.py
+    Loop per monitorare la cartella download e spostare automaticamente i file in Immagini/DOcumenti ecc...
 
