@@ -9,5 +9,5 @@ script in python gestire vari aspetti di un installazione linux
     Script per una prima configurazione del sistema (aggiornametni, repo extra, sfondi, ecc...)
 
 - ##### download-manager.py
-    Loop per monitorare la cartella download e spostare automaticamente i file in Immagini/DOcumenti ecc...
+    Loop per monitorare la cartella download e spostare automaticamente i file nelle cartelle Immagini/Documenti ecc...
 
