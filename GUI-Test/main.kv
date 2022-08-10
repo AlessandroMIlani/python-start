@@ -22,6 +22,15 @@
 
 
 <MainWindow>:
+# per rendere visibili i widget al file python
+    sub: sub
+    input_name: input_name
+    input_surname: input_surname
+    input_age: input_age
+    input_city: input_city
+
+
+# Corpo effettivo della finestra
     BoxLayout:
         id: main_box
         orientation: "vertical"
@@ -49,6 +58,7 @@
                     text: "Name"
                     color: [0,0,0,1]
                 TextInput:
+                    id: input_name
                     multiline: False
             BoxLayout:
                 size_hint_y: None
@@ -56,21 +66,23 @@
                 CustomLabel:
                     text: "Surname"
                 TextInput:
+                    id: input_surname
                     multiline: False
             BoxLayout:
                 size_hint_y: None
                 height: 30
-                CustomLabel:
+                CustomLabel:                   
                     text: "City"
                 TextInput:
+                    id: input_city
                     multiline: False
             BoxLayout:
                 size_hint_y: None
                 height: 30
-                CustomLabel:
+                CustomLabel:                   
                     text: "Date"
- 
                 TextInput:
+                    id: input_age
                     multiline: False
             BoxLayout:
         BoxLayout:
@@ -78,6 +90,7 @@
             size_hint_y: 0.1 
             BoxLayout:
             Button:
+                id: sub
                 background_normal: ""
                 background_color: 1,0.5,0,1
                 background_down: ""
@@ -86,6 +99,6 @@
                     self.background_color = 0,0,1,0.8
                 on_release:
                     self.background_color = 1,0.5,0,1
+                    root.send_form()
 
             BoxLayout:
-
