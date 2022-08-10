@@ -21,6 +21,8 @@
     color: 1,1,1,1
 
 
+
+
 <MainWindow>:
 # per rendere visibili i widget al file python
     sub: sub
@@ -99,6 +101,34 @@
                     self.background_color = 0,0,1,0.8
                 on_release:
                     self.background_color = 1,0.5,0,1
-                    root.send_form()
+                    root.pop_form()
 
             BoxLayout:
+
+
+<Mypopup>:
+    send_form: send_form 
+    id: popup
+    size_hint: 0.5,0.5
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            text: "Send form?"
+            color: [1,1,1,1]
+            font_size: 20
+        BoxLayout:
+            orientation: "horizontal"
+            Button:
+                id : send_form
+                size_hint_y: None
+                height: 50
+                text: "Confirm"
+                on_release:
+                    root.send_form()
+                    root.dismiss()
+            Button:
+                size_hint_y: None
+                height: 50
+                text: "Cancel"
+                on_press:
+                    root.dismiss()
