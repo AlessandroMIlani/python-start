@@ -1,3 +1,26 @@
+
+#Commenti a caso:
+# MainWindow: Finestra principale
+# BoxLayout: Box orizzontale/verticale che contiene gli altri elementi (altri box, testo,bottoni ecc)
+# 
+# i BoxLayout vuoti servono per separare gli elementi 
+
+# Classe custom per la label
+# @QUALCOSA per ereditare le funzionalità della classe 
+# In questo caso specifico solo il colore, per non ripeterlo in tutti i widget
+<CustomLabel@Label>:
+    color: 0,0,0,1
+
+<TitleLabel@Label>:
+    canvas.before:
+        Color:
+            rgba: 1,0.5,0,1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    color: 1,1,1,1
+
+
 <MainWindow>:
     BoxLayout:
         id: main_box
@@ -5,52 +28,64 @@
         BoxLayout:
             id: title
             size_hint_y: 0.20
-            Label: 
+            TitleLabel: 
                 text: "primo form"
                 font_size: 40
                 bold: True
-                color: [0,0,1,1]
-            
         BoxLayout:
             id: fields
+            canvas.before:
+                Color:
+                    rgba: 0.388,0.4,0.415,1
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
             orientation: "vertical"
             BoxLayout:
-                
             BoxLayout:
                 size_hint_y: None
                 height: 30
                 Label:
                     text: "Name"
+                    color: [0,0,0,1]
                 TextInput:
                     multiline: False
             BoxLayout:
                 size_hint_y: None
                 height: 30
-                Label:
+                CustomLabel:
                     text: "Surname"
                 TextInput:
                     multiline: False
             BoxLayout:
                 size_hint_y: None
                 height: 30
-                Label:
+                CustomLabel:
                     text: "City"
                 TextInput:
                     multiline: False
             BoxLayout:
                 size_hint_y: None
                 height: 30
-                Label:
+                CustomLabel:
                     text: "Date"
+ 
                 TextInput:
                     multiline: False
             BoxLayout:
-                
         BoxLayout:
             id: buttons
             size_hint_y: 0.1 
             BoxLayout:
             Button:
+                background_normal: ""
+                background_color: 1,0.5,0,1
+                background_down: ""
                 text: "Send"
+                on_press:
+                    self.background_color = 0,0,1,0.8
+                on_release:
+                    self.background_color = 1,0.5,0,1
+
             BoxLayout:
 
