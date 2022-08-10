@@ -4,28 +4,53 @@
         orientation: "vertical"
         BoxLayout:
             id: title
+            size_hint_y: 0.20
             Label: 
                 text: "primo form"
+                font_size: 40
+                bold: True
+                color: [0,0,1,1]
+            
         BoxLayout:
             id: fields
             orientation: "vertical"
             BoxLayout:
+                
+            BoxLayout:
+                size_hint_y: None
+                height: 30
                 Label:
                     text: "Name"
                 TextInput:
+                    multiline: False
             BoxLayout:
+                size_hint_y: None
+                height: 30
                 Label:
                     text: "Surname"
                 TextInput:
+                    multiline: False
             BoxLayout:
+                size_hint_y: None
+                height: 30
                 Label:
                     text: "City"
                 TextInput:
+                    multiline: False
             BoxLayout:
+                size_hint_y: None
+                height: 30
                 Label:
                     text: "Date"
                 TextInput:
+                    multiline: False
+            BoxLayout:
+                
         BoxLayout:
             id: buttons
+            size_hint_y: 0.1 
+            BoxLayout:
             Button:
                 text: "Send"
+            BoxLayout:
+

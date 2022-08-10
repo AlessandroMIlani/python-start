@@ -3,6 +3,7 @@ from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from more_itertools import sample
 
+
 class MainWindow(BoxLayout):
     pass
 
