@@ -21,6 +21,9 @@
             pos: self.pos
     color: 1,1,1,1
 
+<CustomButton@Button>:
+    background_color: 1,0.5,0,1
+
 
 
 
@@ -35,6 +38,9 @@
     input_year: input_year
     input_city: input_city
     input_job: input_job
+    license_a: license_a
+    license_b: license_b
+    license_c: license_c
 
 
  # Corpo effettivo della finestra
@@ -50,7 +56,8 @@
                 font_size: 40
                 bold: True
         BoxLayout:
-            padding: 10,10
+            padding: 20
+            spacing: 10
             id: fields
             canvas.before:
                 Color:
@@ -96,18 +103,24 @@
                     Spinner:
                         id: input_day
                         multiline: False
+                        background_normal: ""
+                        background_color: 1,0.5,0,1
                         text: "Day"
                         values: ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"]
                     Spinner:
                         id: input_month
                         multiline: False
+                        background_normal: ""
+                        background_color: 1,0.5,0,1
                         text: "Month"
                         values: ["January","February","March","April","May","June","July","August","September","October","November","December"]
                     Spinner:
                         id: input_year
                         multiline: False
+                        background_normal: ""
+                        background_color: 1,0.5,0,1
                         text: "Year"   
-                        values: 
+                        values: ["1990","1991","1992","1993","1994","1995","1996","1997","1998","1999","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020"]
             BoxLayout:
                 size_hint_y: None
                 height: 30
@@ -115,11 +128,35 @@
                     text: "Job"
                 Spinner:
                     id: input_job
+                    background_normal: ""
+                    background_color: 1,0.5,0,1
                     text: "choose"
                     values: ["Student", "Teacher", "Doctor", "Other"]
                     size_hint_y: None
-                    height: 30            
+                    height: 30      
             BoxLayout:
+                size_hint_y: None
+                height: 30      
+                CustomLabel:
+                    text: "Driver's license"
+                BoxLayout:
+                    CustomLabel:
+                        text: "License A"
+                    CheckBox:
+                        id: license_a
+                        color: [0,0,0,1]
+                    CustomLabel:
+                        text: "License B"
+                    CheckBox:
+                        id: license_b
+                        color: [0,0,0,1]
+                    CustomLabel:
+                        text: "License C"
+                    CheckBox:
+                        id: license_c
+                        color: [0,0,0,1]                                        
+            BoxLayout:
+
         BoxLayout:
             id: buttons
             size_hint_y: 0.1 
@@ -127,7 +164,7 @@
                 Color:
                     rgba: 0.388,0.4,0.415,1
             BoxLayout:
-            Button:
+            CustomButton:
                 id: sub
                 background_normal: ""
                 background_color: 1,0.5,0,1
@@ -156,7 +193,7 @@
             font_size: 20
         BoxLayout:
             orientation: "horizontal"
-            Button:
+            CustomButton:
                 id : send_form
                 size_hint_y: None
                 height: 50
@@ -165,7 +202,7 @@
                     root.send_form()
                     root.dismiss()
 
-            Button:
+            CustomButton:
                 size_hint_y: None
                 height: 50
                 text: "Cancel"
@@ -174,14 +211,32 @@
 
 
 <SecondWindow>:
+    name: "second_window" 
     BoxLayout:
+        canvas.before:
+            Color:
+                rgba: 0.388,0.4,0.415,1
+            Rectangle:
+                size: self.size
+                pos: self.pos
         orientation: "vertical"
         Label:
-            text: "Second screen"
+            text: "Thanks for filling the form"
             color: [1,1,1,1]
-            font_size: 90
-        Button:
-            text: "Back"
-            on_release:
-                root.go_back()
-            size_hint_y: 0.1
+            font_size: 40
+        BoxLayout:
+            spacing: 10
+            padding: 10
+            orientation: "horizontal"
+            CustomButton:
+                size_hint_y: None
+                height: 50
+                text: "Back"
+                on_release:
+                    root.go_back()
+            CustomButton:
+                size_hint_y: None
+                height: 50            
+                text: "exit"
+                on_release:
+                    exit()

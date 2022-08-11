@@ -27,13 +27,20 @@ class MainWindow(Screen):
         custom_popup.open()
 
     def send_form(self):
+        licenses = ""
         form = open("/home/ale/Scrivania/form.txt", "w+")
-        form.write("Nome: " + self.input_name.text + "\n" + 
+        form.write("Nome: "    + self.input_name.text + "\n" + 
                    "Cognome: " + self.input_surname.text + "\n" + 
-                   "Città: " + self.input_city.text + "\n" +  
-                   "Data: " + self.input_day.text + "/"+ self.input_month+ "/"+ self.input_year + "\n" +
-                   "Job: " + self.input_job.text + "\n" )
-
+                   "Città: "   + self.input_city.text + "\n" +  
+                   "Data: "    + self.input_day.text + "-" + self.input_month.text + "-" + self.input_year.text + "\n" +
+                   "Job: "     + self.input_job.text + "\n" )
+        if self.license_a.active:
+            licenses += "License A "
+        if self.license_b.active:
+            licenses += "License B "
+        if self.license_c.active:
+            licenses += "License C "
+        form.write("Licenses: " + licenses + "\n")
         sm.switch_to(screens[1], direction='left')
 
 
