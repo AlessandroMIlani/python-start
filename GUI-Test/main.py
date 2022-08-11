@@ -31,21 +31,23 @@ class MainWindow(Screen):
         form.write("Nome: " + self.input_name.text + "\n" + 
                    "Cognome: " + self.input_surname.text + "\n" + 
                    "Città: " + self.input_city.text + "\n" +  
-                   "Data: " + self.input_age.text + "\n")
-        sm.current = "second"
+                   "Data: " + self.input_day.text + "/"+ self.input_month+ "/"+ self.input_year + "\n" +
+                   "Job: " + self.input_job.text + "\n" )
+
+        sm.switch_to(screens[1], direction='left')
 
 
 
 class SecondWindow(Screen):
     def go_back(self):
-        sm.current = "main"
+                sm.switch_to(screens[0], direction='right')
     pass
 
 class WindowManager(ScreenManager):
     pass
 
 
-sm = WindowManager(transition=WipeTransition())
+sm = WindowManager()
 screens = [MainWindow(name='main'), SecondWindow(name='second')]
 for screen in screens:
     sm.add_widget(screen)
