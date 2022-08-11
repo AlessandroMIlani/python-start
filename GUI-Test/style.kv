@@ -24,7 +24,7 @@
 
 
 <MainWindow>:
-# per rendere visibili i widget al file python
+ # per rendere visibili i widget al file python
     sub: sub
     input_name: input_name
     input_surname: input_surname
@@ -32,7 +32,7 @@
     input_city: input_city
 
 
-# Corpo effettivo della finestra
+ # Corpo effettivo della finestra
     BoxLayout:
         id: main_box
         orientation: "vertical"
@@ -106,6 +106,7 @@
             BoxLayout:
 
 
+
 <Mypopup>:
     send_form: send_form 
     id: popup
@@ -126,9 +127,24 @@
                 on_release:
                     root.send_form()
                     root.dismiss()
+
             Button:
                 size_hint_y: None
                 height: 50
                 text: "Cancel"
                 on_press:
                     root.dismiss()
+
+
+<SecondWindow>:
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            text: "Second screen"
+            color: [1,1,1,1]
+            font_size: 90
+        Button:
+            text: "Back"
+            on_release:
+                root.go_back()
+            size_hint_y: 0.1
