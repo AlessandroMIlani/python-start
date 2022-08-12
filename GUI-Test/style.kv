@@ -24,8 +24,11 @@
 <CustomButton@Button>:
     background_color: 1,0.5,0,1
 
+<CustomBox@BoxLayout>:
+    size_hint_y: None
+    height: 30    
 
-
+#-----------------------------------------------------------------------------------------------------------------------
 
 <MainWindow>:
  # per rendere visibili i widget al file python
@@ -45,6 +48,9 @@
 
  # Corpo effettivo della finestra
     BoxLayout:
+        canvas.before:
+            Color:
+                rgba: 0.388,0.4,0.415,1
         padding: 10,10
         id: main_box
         orientation: "vertical"
@@ -66,40 +72,31 @@
                     size: self.size
                     pos: self.pos
             orientation: "vertical"
-            BoxLayout:
-                size_hint_y: None
-                height: 30
+            CustomBox:
                 Label:
                     text: "Name"
                     color: [0,0,0,1]
                 TextInput:
                     id: input_name
                     multiline: False
-            BoxLayout:
-                size_hint_y: None
-                height: 30
+            CustomBox:
                 CustomLabel:
                     text: "Surname"
                 TextInput:
                     id: input_surname
                     multiline: False
-            BoxLayout:
-                size_hint_y: None
-                height: 30
+            CustomBox:
                 CustomLabel:                   
                     text: "City"
                 TextInput:
                     id: input_city
                     multiline: False
-            BoxLayout:
-                size_hint_y: None
-                height: 30
+            CustomBox:
                 CustomLabel:                   
                     text: "Date"
-                BoxLayout:
+                CustomBox:
                     id: input_age
                     orientation: "horizontal"
-                    height: 30
                     Spinner:
                         id: input_day
                         multiline: False
@@ -121,9 +118,7 @@
                         background_color: 1,0.5,0,1
                         text: "Year"   
                         values: ["1990","1991","1992","1993","1994","1995","1996","1997","1998","1999","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020"]
-            BoxLayout:
-                size_hint_y: None
-                height: 30
+            CustomBox:
                 CustomLabel:                   
                     text: "Job"
                 Spinner:
@@ -134,9 +129,7 @@
                     values: ["Student", "Teacher", "Doctor", "Other"]
                     size_hint_y: None
                     height: 30      
-            BoxLayout:
-                size_hint_y: None
-                height: 30      
+            CustomBox:     
                 CustomLabel:
                     text: "Driver's license"
                 BoxLayout:
@@ -157,9 +150,8 @@
                         color: [0,0,0,1]                                        
             BoxLayout:
 
-        BoxLayout:
+        CustomBox:
             id: buttons
-            size_hint_y: 0.1 
             canvas.before:
                 Color:
                     rgba: 0.388,0.4,0.415,1
@@ -175,11 +167,10 @@
                 on_release:
                     self.background_color = 1,0.5,0,1
                     root.pop_form()
-
             BoxLayout:
 
 
-
+#-----------------------------------------------------------------------------------------------------------------------
 
 <Mypopup>:
     send_form: send_form 
@@ -209,6 +200,7 @@
                 on_press:
                     root.dismiss()
 
+#-----------------------------------------------------------------------------------------------------------------------
 
 <SecondWindow>:
     name: "second_window" 
@@ -240,3 +232,5 @@
                 text: "exit"
                 on_release:
                     exit()
+
+#-----------------------------------------------------------------------------------------------------------------------

@@ -1,24 +1,17 @@
-# use kivy to build the gui
 from kivy.app import App
-# from kivy.uix.boxlayout import BoxLayout
-from more_itertools import sample
 from kivy.properties import ObjectProperty
 from kivy.uix.popup import Popup
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen, WipeTransition
 
-
-
-# Caricare file stile con nomi diversi da quello de lpile pytohn
-kv = Builder.load_file("style.kv")
-
+# Gestione Popup
 class MyPopup(Popup):
     send_form = ObjectProperty(None)
 
     def dismiss_popup(self):
         self.dismiss()
 
-
+# Gestione Schermata Principale
 class MainWindow(Screen):
     sub = ObjectProperty(None)
     
@@ -44,30 +37,34 @@ class MainWindow(Screen):
         sm.switch_to(screens[1], direction='left')
 
 
-
+# Gestione Schermata Secondaria
 class SecondWindow(Screen):
     def go_back(self):
                 sm.switch_to(screens[0], direction='right')
     pass
 
+# Windows Manager per gestire le diverse schermate
 class WindowManager(ScreenManager):
     pass
 
+# Creazione App
+class MainApp(App):
+    def build(self):
+        return sm
+
+
+# Caricare file stile con nomi diversi da quello de lpile pytohn
+kv = Builder.load_file("style.kv")
 
 sm = WindowManager()
+sample_app = MainApp()
 screens = [MainWindow(name='main'), SecondWindow(name='second')]
+
 for screen in screens:
     sm.add_widget(screen)
 sm.current = 'main'
 
 
-
-
-class MainApp(App):
-    def build(self):
-        return sm
-
-sample_app = MainApp()
 sample_app.run()
 
 
