@@ -1,0 +1,20 @@
+#:include screen1.kv
+#:include screen2.kv
+
+ScreenManager:
+    Screen:
+        name: "main"
+        BoxLayout:
+            orientation: "vertical"
+            Button:
+                text: "Go to screen 1"
+                on_release: app.root.current = "screen1"
+            Button:
+                text: "Go to screen 2"
+                on_release: app.root.current = "screen2"
+            Button:
+                text: "exit"
+                on_release: exit()
+    
+    Screen1:
+    Screen2:
